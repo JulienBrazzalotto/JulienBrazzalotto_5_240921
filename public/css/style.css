@@ -35,19 +35,28 @@ article a:hover{
     border-color: #e58300;
 }
 
+figure{
+    background-color: #e58300 ;
+}
+
 h1{
     font-size: 3rem;
     color: #e58300;
 }
 
 h2{
+    font-size: 2rem;
+    color: white;
+}
+
+h3{
     font-size: 3rem;
     color: #e58300;
 }
 
-hr{
-    height: 5px;
-    color: #e58300;
+.line{
+    height: 3px;
+    background-color: #e58300;
 }
 
 
