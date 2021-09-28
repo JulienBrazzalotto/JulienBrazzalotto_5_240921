@@ -45,8 +45,24 @@
             <div class="line"></div>
         </header>
         <main class="text-center">
-            <h1 class="my-0 py-5">Choissisez votre modèle de lentille</h1>
-            
+            <h1 class="my-0 py-5">Personnalisez votre caméra !!!</h1>
+            <div id="display" class="h-100 w-100 col-12 d-flex flex-column flex-xl-row align-items-center justify-content-xl-center container p-5">
+                <template id="template" class="text-center">
+                    <div class="box mx-3 my-3 rounded-3 bg-dark w-100 h-100">
+                        <figure>
+                            <img class="img-dimension rounded-3 w-100" id="image" src="" alt="">
+                            <figcaption class="w-100">
+                                <h2 id="title">Titre</h2>
+                                <p id="description" class="text-white">Description</p>
+                                <p id="price" class="text-white">Prix</p>
+                                <p><select class="text-white" name="lenses" id="lenses">Lentilles</select></p>
+                                <input type="text">
+                            </figcaption>
+                            <button class="bg-white text-dark border-dark mb-1">Choisir ce modèle</button>                    
+                        </figure>
+                    </div>
+                </template>
+            </div>
             <div class="line"></div>
         </main>
         <footer class="text-center">

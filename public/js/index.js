@@ -15,10 +15,11 @@ async function main() {
 function getArticles() {
     return fetch("http://localhost:3000/api/cameras")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
+            console.log(response)
             return response.json(); //transforme la réponse en json pour etre lu par le javascript
         })
         .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promise précédente
-            alert(error)
+            document.getElementById('display').innerHTML = "Erreur !!! Nous ne pouvons pas récupérer vos produits..."
         })
 }      //en mettant le return au niveau du fetch nous devons mettre la fonction sur await car nous avons une promesse faite après
 
