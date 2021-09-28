@@ -5,7 +5,7 @@ main()
 async function main() {
     //Récuperer les articles avec une fonction
     const articles = await getArticles()
-    //Afficher tous les articles avec une fonction qui parcourt chaque article 
+    //Afficher tous les articles avec une fonction qui parcoure chaque article récupéré précédemment 
     for (article of articles) 
         displayArticle(article)
 }
@@ -13,17 +13,15 @@ async function main() {
 
 //Créer la fonction getArticles qui récupère les articles
 function getArticles() {
-    return fetch("http://localhost:3000/api/cameras")
+    return fetch("http://localhost:3000/api/cameras")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
-            return response.json();
+            return response.json(); //transforme la réponse en json pour etre lu par le javascript
         })
-        .then(function(articles) { //vérifier que l'on récupère bien le json avec un console.log(articles) au lieu de return articles
-            return articles
-        })
-        .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer
+        .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promise précédente
             alert(error)
         })
-}      
+}      //en mettant le return au niveau du fetch nous devons mettre la fonction sur await car nous avons une promesse faite après
+
 
 //Créer la fonction displayArticle pour chaque article 
 function displayArticle(article) {
