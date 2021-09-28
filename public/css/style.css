@@ -1,0 +1,52 @@
+header,
+main,
+footer{
+    background-color: #f3e9f1;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+h1{
+    font-size: 3rem;
+    color: #e58300;
+}
+
+h2{
+    font-size: 2rem;
+    color: white;
+}
+
+h3{
+    font-size: 3rem;
+    color: #e58300;
+}
+
+.line{
+    height: 3px;
+    background-color: #e58300;
+}
+
+.active{
+    text-decoration: underline;
+}
+
+.img-dimension{
+    height: 200px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (min-width:1200px) {
+    figcaption{
+    height: 300px;
+    }
+}
