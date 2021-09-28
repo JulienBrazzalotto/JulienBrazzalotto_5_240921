@@ -25,16 +25,17 @@ function getArticles() {
 
 //Créer la fonction displayArticle pour chaque article 
 function displayArticle(article) {
-    const templateElt = document.getElementById("template")
-    const cloneElt = document.importNode(templateElt.content, true)
+    const templateElt = document.getElementById("template") //récupérer le template HTML
+    const cloneElt = document.importNode(templateElt.content, true) //Cloner le template
 
+    //Change chaque élément
     cloneElt.getElementById("image").src = article.imageUrl
     cloneElt.getElementById("image").alt = article.name
     cloneElt.getElementById("title").textContent = article.name
     cloneElt.getElementById("description").textContent = article.description
     cloneElt.getElementById("price").textContent = convertprice()
 
-    document.getElementById("display").appendChild(cloneElt)
+    document.getElementById("display").appendChild(cloneElt) //Intégration du template au HTML
 }
 
 //Créer le prix en euros en renvoyant un format en fonction de la locale
