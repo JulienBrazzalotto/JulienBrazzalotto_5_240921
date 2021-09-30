@@ -55,10 +55,15 @@
                                 <h2 id="title">Titre</h2>
                                 <p id="description" class="text-white">Description</p>
                                 <p id="price" class="text-white">Prix</p>
-                                <p><select class="text-white" name="lenses" id="lenses">Lentilles</select></p>
-                                <input type="text">
+                                <label class="text-white" for="lense-select">Choisir une lentille</label>
+                                <select class="text-dark" name="lenses" id="lenses">
+                                    <option value="">Choisissez votre lentille</option>
+                                    <option value=""></option>
+                                </select>
+                                <p><label class="text-white" for="quantity">Quantité</label>
+                                <input type="number" name="itemQuantity" min="1" max="50" value="0"></p>
                             </figcaption>
-                            <button class="bg-white text-dark border-dark mb-1">Choisir ce modèle</button>                    
+                            <button class="bg-white text-dark border-dark mb-1">Ajouter au panier</button>                    
                         </figure>
                     </div>
                 </template>
