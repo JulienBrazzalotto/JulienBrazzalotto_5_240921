@@ -25,16 +25,16 @@ function getArticles() {
 
 
 //Créer la fonction displayArticle pour chaque article 
-function displayArticle(article) {
+function displayArticle() {
     const templateElt = document.getElementById("template") //récupérer le template HTML
     const cloneElt = document.importNode(templateElt.content, true) //Cloner le template
 
     //Change chaque élément
     cloneElt.getElementById("image").src = article.imageUrl
     cloneElt.getElementById("image").alt = article.name
-    cloneElt.getElementById("title").textContent = article.name
-    cloneElt.getElementById("description").textContent = article.description
-    cloneElt.getElementById("price").textContent = convertprice()
+    cloneElt.getElementById("title").innerHTML = article.name
+    cloneElt.getElementById("description").innerHTML = article.description
+    cloneElt.getElementById("price").innerHTML = convertprice()
 
     document.getElementById("display").appendChild(cloneElt) //Intégration du template au HTML
 }
