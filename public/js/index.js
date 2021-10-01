@@ -1,12 +1,12 @@
 //Afficher tout les produits sur la page index.html
 "use strict";
 
+
+//Récuperer les articles avec une fonction
 async function main() {
-    //Récuperer les articles avec une fonction
-    const articles = await getArticles()
-    //Afficher tous les articles avec une fonction qui parcoure chaque article récupéré précédemment 
-    for (let article of articles) 
-        displayArticle(article)
+    const articles = await getArticles() //articles est le json récupéré sur l'API
+    for (let article of articles) //Afficher avec la boucle for...of tous les articles (un par un)
+        displayArticle(article) //Fonction afficher un article
 }
 
 
@@ -27,24 +27,25 @@ function getArticles() {
 
 //Créer la fonction displayArticle pour chaque article 
 function displayArticle(article) {
-    const templateElt = document.getElementById("template") //récupérer le template HTML
-    const cloneElt = document.importNode(templateElt.content, true) //Cloner le template
+    const product = document.createElement("div"); //Créer une div
+    product.classList.add("hover", "mx-3","my-3", "box", "rounded-3", "bg-dark", "w-100","h-100"); // Ajouter les classes pour le CSS
+    product.innerHTML = ('<a class="text-white" href="produits.html?id=' + article._id +    // Mettre ce HTML dans cette div avec l'adresse de l'URL de chaque produit en fonction de son identifiant. Le ? permet de mettre un parametre dans l'URL afin de le récupérer
+    '"><figure><img class="picture rounded-3 w-100" src="' + article.imageUrl + 
+    '" alt="' + article.name + '"><figcaption class="w-100"><h2>' + article.name +
+    '</h2><p class="text-white">' + article.description + 
+    '</p><p class="my-5 text-white">' + convertPrice(article) + 
+    '</p></figcaption><p>Choisir ce modèle</p></figure></a>');
 
-    //Change chaque élément
-    cloneElt.getElementById("image").src = article.imageUrl
-    cloneElt.getElementById("image").alt = article.name
-    cloneElt.getElementById("title").innerHTML = article.name
-    cloneElt.getElementById("description").innerHTML = article.description
-    cloneElt.getElementById("price").innerHTML = convertPrice(article)
-
-    document.getElementById("display").appendChild(cloneElt) //Intégration du template au HTML
+    document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
 }
 
-//Créer le prix en euros en renvoyant un format en fonction de la locale
+//Convertir le prix en euros en renvoyant un format en fonction de la locale
 function convertPrice(article){
     const newPrice = article.price / 100
 
     return Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'}).format(newPrice);
 }
 
-main();
+/********************************appel de la fonction*********************/
+
+main(); //appel de la fonction main
