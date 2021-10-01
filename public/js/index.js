@@ -1,5 +1,5 @@
-//Afficher tout les produits sur la page index.html
-"use strict";
+//Afficher tous les produits sur la page index.html
+"use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
 
 
 //Récuperer les articles avec une fonction
@@ -13,9 +13,9 @@ async function main() {
 //Créer la fonction getArticles qui récupère les articles
 function getArticles() {
 
-    return fetch("http://localhost:3000/api/cameras")//Aller a cette URL pour récupérer les produits
+    return fetch("http://localhost:3000/api/cameras/")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
-            console.log(response)
+            console.log(response) //Permet de voir si on récupère bien le json
 
             return response.json(); //transforme la réponse en json pour etre lu par le javascript
         })
@@ -33,7 +33,7 @@ function displayArticle(article) {
     '"><figure><img class="picture rounded-3 w-100" src="' + article.imageUrl + 
     '" alt="' + article.name + '"><figcaption class="w-100"><h2>' + article.name +
     '</h2><p class="text-white">' + article.description + 
-    '</p><p class="my-5 text-white">' + convertPrice(article) + 
+    '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) + 
     '</p></figcaption><p>Choisir ce modèle</p></figure></a>');
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
