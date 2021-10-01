@@ -1,21 +1,22 @@
 //Afficher tout les produits sur la page index.html
-
-main()
+"use strict";
 
 async function main() {
     //Récuperer les articles avec une fonction
     const articles = await getArticles()
     //Afficher tous les articles avec une fonction qui parcoure chaque article récupéré précédemment 
-    for (article of articles) 
+    for (let article of articles) 
         displayArticle(article)
 }
 
 
 //Créer la fonction getArticles qui récupère les articles
 function getArticles() {
+
     return fetch("http://localhost:3000/api/cameras")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
             console.log(response)
+
             return response.json(); //transforme la réponse en json pour etre lu par le javascript
         })
         .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promise précédente
@@ -25,7 +26,7 @@ function getArticles() {
 
 
 //Créer la fonction displayArticle pour chaque article 
-function displayArticle() {
+function displayArticle(article) {
     const templateElt = document.getElementById("template") //récupérer le template HTML
     const cloneElt = document.importNode(templateElt.content, true) //Cloner le template
 
@@ -34,13 +35,16 @@ function displayArticle() {
     cloneElt.getElementById("image").alt = article.name
     cloneElt.getElementById("title").innerHTML = article.name
     cloneElt.getElementById("description").innerHTML = article.description
-    cloneElt.getElementById("price").innerHTML = convertprice()
+    cloneElt.getElementById("price").innerHTML = convertPrice(article)
 
     document.getElementById("display").appendChild(cloneElt) //Intégration du template au HTML
 }
 
 //Créer le prix en euros en renvoyant un format en fonction de la locale
-function convertprice(){
+function convertPrice(article){
     const newPrice = article.price / 100
+
     return Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'}).format(newPrice);
 }
+
+main();
