@@ -11,7 +11,8 @@ console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
 async function main(){
     const article = await getArticle();
     displayProduct(article);
-    displaylenses(article);
+    displayLenses(article);
+    addBasket(article);
 }
 
 
@@ -34,10 +35,10 @@ function displayProduct(article){
     const product = document.createElement("div");
     product.classList.add("box", "mx-3", "my-3", "rounded-3", "bg-dark", "w-100", "h-100");
     product.innerHTML = ('<figure><img class="picture rounded-3 w-100" src="' + article.imageUrl +
-    '" alt="' + article.name + '"><figcaption class="w-100"><h2>' + article.name +
+    '" alt="' + article.name + '"><figcaption class="w-100"><h2 id="nom">' + article.name +
     '</h2><p class="text-white">' + article.description + 
     '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) + 
-    '</p><label class="text-white" for="lense-select">Choisir une lentille</label><select class="text-dark" name="lenses" id="select"><option value="">Choisissez votre lentille</option></select><p><label class="text-white" for="quantity">Quantité (de 1 à 50)</label><input type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button class="bg-white text-dark border-dark mb-1">Ajouter au panier</button></figure>')
+    '</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>')
 
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
@@ -53,14 +54,25 @@ function convertPrice(article){
 
 
 //Fonction permettant d'afficher les lentilles
-function displaylenses(article){
-    for(let i in article.lenses){
-        let lenseOption = document.createElement("option");
+function displayLenses(article){
+    for(const i in article.lenses){
+        const lenseOption = document.createElement("option");
         lenseOption.setAttribute("value", article.lenses[i]);
         lenseOption.innerHTML = article.lenses[i];
 
         document.getElementById("select").appendChild(lenseOption);
     }    
+}
+
+
+function addBasket(article){
+    const add = document.getElementById("add");
+    add.addEventListener("click", function(e) {
+    localStorage.setItem("Nom", article.name);
+    localStorage.setItem("Lense", select.value)
+    localStorage.setItem("Quantité", qty.value);
+    localStorage.setItem("Prix", convertPrice(article))
+    });
 }
 
 main();
