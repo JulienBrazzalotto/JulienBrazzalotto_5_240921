@@ -34,9 +34,6 @@
                         <a class="nav-link" href="index.html">Accueil</a>
                         </li>
                         <li class="nav-item p-3">
-                        <a class="nav-link active" aria-current="page" href="./produits.html">Nos produits</a>
-                        </li>
-                        <li class="nav-item p-3">
                         <a class="nav-link" href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
@@ -47,27 +44,12 @@
         <main class="text-center">
             <h1 class="my-0 py-5">Personnalisez votre caméra !!!</h1>
             <div id="display" class="h-100 w-100 col-12 d-flex flex-column flex-xl-row align-items-center justify-content-xl-center container p-5">
-                <template id="template" class="text-center">
-                    <div class="box mx-3 my-3 rounded-3 bg-dark w-100 h-100">
-                        <figure>
-                            <img class="img-dimension rounded-3 w-100" id="image" src="" alt="">
-                            <figcaption class="w-100">
-                                <h2 id="title">Titre</h2>
-                                <p id="description" class="text-white">Description</p>
-                                <p id="price" class="text-white">Prix</p>
-                                <label class="text-white" for="lense-select">Choisir une lentille</label>
-                                <select class="text-dark" name="lenses" id="lenses">
-                                    <option value="">Choisissez votre lentille</option>
-                                    <option value=""></option>
-                                </select>
-                                <p><label class="text-white" for="quantity">Quantité</label>
-                                <input type="number" name="itemQuantity" min="1" max="50" value="0"></p>
-                            </figcaption>
-                            <button class="bg-white text-dark border-dark mb-1">Ajouter au panier</button>                    
-                        </figure>
-                    </div>
-                </template>
             </div>
+            <div class="mb-5">
+                <a class="lien border border-2 border-dark rounded-pill p-3 me-5" href="index.html">Retour aux produits</a>
+                <a class="lien border border-2 border-dark rounded-pill p-3" href="panier.html">Voir le panier</a>
+            </div>
+            
             <div class="line"></div>
         </main>
         <footer class="text-center">
@@ -91,5 +73,6 @@
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+        <script src="./js/produits.js" defer></script>
     </body>
 </html>
