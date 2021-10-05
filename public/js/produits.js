@@ -68,10 +68,18 @@ function displayLenses(article){
 function addBasket(article){
     const add = document.getElementById("add");
     add.addEventListener("click", function(e) {
-    localStorage.setItem("Nom", article.name);
-    localStorage.setItem("Lense", select.value)
-    localStorage.setItem("Quantité", qty.value);
-    localStorage.setItem("Prix", convertPrice(article))
+    const data={
+        Nom: article.name,
+        Lense: select.value,
+        Quantity: qty.value,
+        Prix: convertPrice(article),
+    }
+    const val = JSON.stringify(data);
+    window.localStorage.setItem("key", val);
+    //localStorage.setItem("Nom", article.name);
+    //localStorage.setItem("Lense", select.value)
+    //localStorage.setItem("Quantité", qty.value);
+    //localStorage.setItem("Prix", convertPrice(article))
     });
 }
 
