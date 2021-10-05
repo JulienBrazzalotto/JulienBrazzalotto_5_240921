@@ -64,7 +64,7 @@ function displayLenses(article){
     }    
 }
 
-
+//Fonction permettant d'ajouter un article au localstorage a chaque clic sur le bouton
 function addBasket(article){
     const add = document.getElementById("add");
     add.addEventListener("click", function(e) {
@@ -75,8 +75,8 @@ function addBasket(article){
             Prix: convertPrice(article),
         }
         const basket = JSON.parse(localStorage.getItem("Basket")) || []; //renvoie le JSON si vrai sinon renvoie le tableau si pas de JSON (ou logique)
-        basket.push(eltBasket);
-        localStorage.setItem("Basket", JSON.stringify(basket));
+        basket.push(eltBasket); 
+        localStorage.setItem("Basket", JSON.stringify(basket)); 
 
 
     //const data={
