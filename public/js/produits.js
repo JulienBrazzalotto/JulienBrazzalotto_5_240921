@@ -47,7 +47,7 @@ function displayProduct(article){
 
 //Convertir le prix en euros en renvoyant un format en fonction de la locale comme sur la page index.html
 function convertPrice(article){
-    const newPrice = article.price / 100
+    const newPrice = article.price / 100;
 
     return Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'}).format(newPrice);
 }
@@ -68,14 +68,27 @@ function displayLenses(article){
 function addBasket(article){
     const add = document.getElementById("add");
     add.addEventListener("click", function(e) {
-    const data={
-        Nom: article.name,
-        Lense: select.value,
-        Quantity: qty.value,
-        Prix: convertPrice(article),
-    }
-    const val = JSON.stringify(data);
-    window.localStorage.setItem("key", val);
+        const eltBasket = {
+            Nom: article.name,
+            Lense: select.value,
+            Quantity: qty.value,
+            Prix: convertPrice(article),
+        }
+        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //renvoie le JSON si vrai sinon renvoie le tableau si pas de JSON (ou logique)
+        basket.push(eltBasket);
+        localStorage.setItem("Basket", JSON.stringify(basket));
+
+
+    //const data={
+     //   Nom: article.name,
+     //   Lense: select.value,
+     //   Quantity: qty.value,
+       // Prix: convertPrice(article),
+   // }
+    //const val = JSON.stringify(data);
+   // localStorage.setItem("article", val);
+
+
     //localStorage.setItem("Nom", article.name);
     //localStorage.setItem("Lense", select.value)
     //localStorage.setItem("Quantité", qty.value);
