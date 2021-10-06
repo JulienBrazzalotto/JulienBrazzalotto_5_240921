@@ -34,7 +34,7 @@ function displayArticle(article) {
     '" alt="' + article.name + '"><figcaption class="w-100"><h2>' + article.name +
     '</h2><p class="text-white">' + article.description + 
     '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) + 
-    '</p></figcaption><p>Choisir ce modèle</p></figure></a>');
+    '</p></figcaption><p>Decouvrez ce modèle</p></figure></a>');
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
 }
