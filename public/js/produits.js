@@ -1,4 +1,4 @@
-//Afficher tous les produits sur la page index.html
+//Afficher le produit sélectionner dans la page index.html, choisir son option, et mettre dans le localstorage
 "use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
 
 //Permet de récupérer l'ID du produit fourni sur la page index.html
@@ -7,7 +7,7 @@ const idProduct = params.get('id'); //permet de récupérer l'ID dans l'URL
 console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
 
 
-//Fonction permettant d'afficher l'article avec les différentes options de lentilles
+//Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localstorage des articles
 async function main(){
     const article = await getArticle();
     displayProduct(article);
@@ -49,7 +49,7 @@ function displayProduct(article){
 function convertPrice(article){
     const newPrice = article.price / 100;
 
-    return Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'}).format(newPrice);
+    return newPrice + ' €'
 }
 
 
