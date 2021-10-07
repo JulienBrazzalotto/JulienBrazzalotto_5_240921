@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Personnalisation-Orinoco achat de cameras vintages</title>
+        <title>Panier-Orinoco achat de cameras vintages</title>
 
-        <link rel="icon" type="image/x-icon" href="../favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css" as="style">
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style"/>
@@ -19,22 +19,22 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-        <link rel="stylesheet" href="../public/css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <header>
             <nav class="col-12 container-fluid navbar navbar-expand-lg navbar-light px-4">
-                <a class="col-7 navbar-brand" href="index.html"><img src="../images/logo.webp" alt="Logo orinoco"></a>
+                <a class="col-7 navbar-brand" href="index.html"><img src="/images/logo.webp" alt="Logo orinoco"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="justify-content-lg-end col collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav p-0">
                         <li class="nav-item p-3">
-                        <a class="nav-link" href="index.html">Accueil</a>
+                        <a class="nav-link" href="/public/index.html">Accueil</a>
                         </li>
                         <li class="nav-item p-3">
-                        <a class="nav-link" href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-link active" aria-current="page" href="/public/views/panier.html"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -42,21 +42,68 @@
             <div class="line"></div>
         </header>
         <main class="text-center">
-            <h1 class="my-0 py-5">Personnalisez votre caméra !!!</h1>
-            <div id="display" class="h-100 w-100 col-12 d-flex flex-column flex-xl-row align-items-center justify-content-xl-center container p-5">
-            </div>
-            <div class="mb-5">
-                <a class="lien border border-2 border-dark rounded-pill p-3 me-5" href="index.html">Retour aux produits</a>
-                <a class="lien border border-2 border-dark rounded-pill p-3" href="panier.html">Voir le panier</a>
-            </div>
-            
+            <section class="d-flex flex-column align-items-center">
+                <h1 class="my-0 py-5">Votre panier</h1>
+                <table class=" border border-3 border-dark mb-5">
+                    <thead>
+                        <tr>
+                            <th class="px-5">Article</th>
+                            <th class="px-5">Option</th>
+                            <th class="px-5">Quantité</th>
+                            <th class="px-5">Prix a l'unité</th>
+                        </tr>
+                    </thead>
+                    <tbody id="display">
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Total</th>
+                            <th id="total"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section>
+                <h2 class="text-dark">Adresse de livraison</h2>
+                <form method="GET">
+                    <ul>
+                        <li class="m-2">
+                            <label for="firstname">Prénom:</label>
+                            <input type="text" id="firstname" required>
+                        </li>
+                        <li class="m-2">
+                            <label for="lastname">Nom:</label>
+                            <input type="text" id="lastname" required>
+                        </li>
+                        <li class="m-2">
+                            <label for="adress">Adresse:</label>
+                            <input type="text" id="adress" required>
+                        </li>
+                        <li class="m-2">
+                            <label for="city">Ville:</label>
+                            <input type="text" id="city" required>
+                        </li>
+                        <li class="m-2">
+                            <label for="mail">Email:</label>
+                            <input type="email" id="mail" required>
+                        </li>
+                        <li>
+                            <input class="bg-dark text-white" type="submit" value="Valider votre commande">
+                        </li>
+                    </ul>
+                </form>
+            </section>
+
             <div class="line"></div>
         </main>
         <footer class="text-center">
             <h3 class="py-5">Orinoco</h3>
             <ul class="d-flex flex-column flex-lg-row justify-content-center col-md-12 p-0">
                 <li><a class="px-5" href="#">L'entreprise</a></li>
-                <li><a class="px-5" href="produits.html">Nos produits</a></li>
+                <li><a class="px-5" href="/public/index.html">Nos produits</a></li>
                 <li><a class="px-5" href="#">Nos Services</a></li>
                 <li><a class="px-5" href="mailto:contact@oronico.fr">Contact</a></li>
             </ul>
@@ -73,6 +120,6 @@
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"></script>
-        <script src="./js/produits.js" defer></script>
+        <script src="/public/js/panier.js"></script>
     </body>
 </html>

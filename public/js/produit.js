@@ -34,11 +34,12 @@ function getArticle(){
 function displayProduct(article){
     const product = document.createElement("div");
     product.classList.add("box", "mx-3", "my-3", "rounded-3", "bg-dark", "w-100", "h-100");
+    
     product.innerHTML = ('<figure><img class="picture rounded-3 w-100" src="' + article.imageUrl +
     '" alt="' + article.name + '"><figcaption class="w-100"><h2 id="nom">' + article.name +
     '</h2><p class="text-white">' + article.description + 
-    '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) + 
-    '</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>')
+    '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) +
+    ' €</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>')
 
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
@@ -49,7 +50,7 @@ function displayProduct(article){
 function convertPrice(article){
     const newPrice = article.price / 100;
 
-    return newPrice + ' €'
+    return newPrice;
 }
 
 
@@ -77,22 +78,6 @@ function addBasket(article){
         const basket = JSON.parse(localStorage.getItem("Basket")) || []; //renvoie le JSON si vrai sinon renvoie le tableau si pas de JSON (ou logique)
         basket.push(eltBasket); 
         localStorage.setItem("Basket", JSON.stringify(basket)); 
-
-
-    //const data={
-     //   Nom: article.name,
-     //   Lense: select.value,
-     //   Quantity: qty.value,
-       // Prix: convertPrice(article),
-   // }
-    //const val = JSON.stringify(data);
-   // localStorage.setItem("article", val);
-
-
-    //localStorage.setItem("Nom", article.name);
-    //localStorage.setItem("Lense", select.value)
-    //localStorage.setItem("Quantité", qty.value);
-    //localStorage.setItem("Prix", convertPrice(article))
     });
 }
 
