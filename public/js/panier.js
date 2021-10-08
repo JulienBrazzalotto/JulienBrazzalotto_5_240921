@@ -15,20 +15,22 @@ function displayAllBasket(){
     
     total()
     getLocalStorage()
+    clearBasket()
 }
 
 
 
 
 function getLocalStorage() {
-
     for (let i in basket) {
          const article = document.createElement("tr");
          article.classList.add("my-5");
          article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
 
+
          document.getElementById("display").appendChild(article);
     };
+    
 }
 
 
@@ -48,6 +50,27 @@ function total(){
 
 
 
+function clearBasket(){
+    
+    if(localStorage !=0){
+        let button = document.createElement("p");
+        button.classList.add("mb-5");
+        button.innerHTML = ('<a class="bg-dark text-white rounded-pill p-2">vider le panier</a>');
+
+        
+        button.addEventListener('click', function(e){
+            
+            localStorage.clear();
+            location.reload();
+        })
+        
+        document.getElementById("clear").appendChild(button);
+    }
+        
+}
+
+
 
 displayAllBasket();
+
 
