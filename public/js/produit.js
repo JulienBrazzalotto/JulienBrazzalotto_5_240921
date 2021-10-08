@@ -95,6 +95,7 @@ function addBasket(article){
     const add = document.getElementById("add");
     add.addEventListener("click", function(e) {
         const eltBasket = {
+            Id: idProduct,
             Nom: article.name,
             Lense: select.value,
             Quantity: qty.value,
