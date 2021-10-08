@@ -3,11 +3,25 @@
 "use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
 
 
+
+
 const basket = JSON.parse(localStorage.getItem("Basket"));
 console.log(basket)
 
 
-function getLine() {
+
+
+function displayAllBasket(){
+    
+    total()
+    getLocalStorage()
+}
+
+
+
+
+function getLocalStorage() {
+
     for (let i in basket) {
          const article = document.createElement("tr");
          article.classList.add("my-5");
@@ -17,11 +31,14 @@ function getLine() {
     };
 }
 
+
+
+
 function total(){
     let totalBasket = 0;
 
     for (let i = 0; i < basket.length; i++){
-        totalBasket += basket[i].Prix;
+        totalBasket += basket[i].Prix * basket[i].Quantity;
         console.log("totalBasket #" + i + ": " + totalBasket);        
     }
 
@@ -30,6 +47,7 @@ function total(){
 }
 
 
-total()
-getLine();
+
+
+displayAllBasket();
 

@@ -3,8 +3,8 @@
 
 
 //Récuperer les articles avec une fonction
-async function main() {
-    const articles = await getArticles() //articles est le json récupéré sur l'API
+async function displayAllArticles() {
+    const articles = await getAllArticles() //articles est le json récupéré sur l'API
 
     for (let article of articles) //Afficher avec la boucle for...of tous les articles (un par un)
         displayArticle(article) //Fonction afficher un article
@@ -12,7 +12,7 @@ async function main() {
 
 
 //Créer la fonction getArticles qui récupère les articles
-function getArticles() {
+function getAllArticles() {
 
     return fetch("http://localhost:3000/api/cameras/")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
@@ -60,4 +60,4 @@ function convertPrice(article){
 
 /********************************appel de la fonction*********************/
 
-main(); //appel de la fonction main
+displayAllArticles(); //appel de la fonction principale
