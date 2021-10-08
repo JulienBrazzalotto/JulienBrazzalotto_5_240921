@@ -3,15 +3,16 @@
 
 
 //Récuperer les articles avec une fonction
-async function main() {
-    const articles = await getArticles() //articles est le json récupéré sur l'API
+async function displayAllArticles() {
+    const articles = await getAllArticles() //articles est le json récupéré sur l'API
+
     for (let article of articles) //Afficher avec la boucle for...of tous les articles (un par un)
         displayArticle(article) //Fonction afficher un article
 }
 
 
 //Créer la fonction getArticles qui récupère les articles
-function getArticles() {
+function getAllArticles() {
 
     return fetch("http://localhost:3000/api/cameras/")//Aller a cette URL pour récupérer les produits
         .then(function(response) {
@@ -29,12 +30,23 @@ function getArticles() {
 function displayArticle(article) {
     const product = document.createElement("div"); //Créer une div
     product.classList.add("hover", "mx-3","my-3", "box", "rounded-3", "bg-dark", "w-100","h-100"); // Ajouter les classes pour le CSS
-    product.innerHTML = ('<a class="text-white" href="produits.html?id=' + article._id +    // Mettre ce HTML dans cette div avec l'adresse de l'URL de chaque produit en fonction de son identifiant. Le ? permet de mettre un parametre dans l'URL afin de le récupérer
-    '"><figure><img class="picture rounded-3 w-100" src="' + article.imageUrl + 
-    '" alt="' + article.name + '"><figcaption class="w-100"><h2>' + article.name +
-    '</h2><p class="text-white">' + article.description + 
-    '</p><p class="my-5 text-white">Prix: ' + convertPrice(article) + 
-    '</p></figcaption><p>Decouvrez ce modèle</p></figure></a>');
+
+    product.innerHTML = 
+        (
+            '<a class="text-white" href="./views/produit.html?id=' 
+            + article._id 
+            + '"><figure><img class="picture rounded-3 w-100" src="' 
+            + article.imageUrl 
+            + '" alt="' 
+            + article.name 
+            + '"><figcaption class="w-100"><h2>' 
+            + article.name 
+            + '</h2><p class="text-white">' 
+            + article.description 
+            + '</p><p class="my-5 text-white">Prix: ' 
+            + convertPrice(article) 
+            + '</p></figcaption><p>Decouvrez ce modèle</p></figure></a>'
+        );
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
 }
@@ -48,4 +60,4 @@ function convertPrice(article){
 
 /********************************appel de la fonction*********************/
 
-main(); //appel de la fonction main
+displayAllArticles(); //appel de la fonction principale
