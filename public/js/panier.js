@@ -11,26 +11,29 @@ console.log(basket)
 
 
 
-function displayAllBasket(){
-    
-    total()
-    getLocalStorage()
-    clearBasket()
-}
 
 
 
 
 function getLocalStorage() {
-    for (let i in basket) {
-         const article = document.createElement("tr");
-         article.classList.add("my-5");
-         article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
-
-
-         document.getElementById("display").appendChild(article);
-    };
     
+    let productId = []
+
+    for (let i in basket) {
+        
+        const article = document.createElement("tr");
+        article.classList.add("my-5");
+        article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
+
+
+        document.getElementById("display").appendChild(article);
+
+        productId.push(basket[i].Id)
+        localStorage.setItem("Basketid", JSON.stringify(productId))
+
+        
+    };
+    console.log(productId)
 }
 
 
@@ -63,14 +66,80 @@ function clearBasket(){
             localStorage.clear();
             location.reload();
         })
-        
+
         document.getElementById("clear").appendChild(button);
     }
-        
 }
 
 
 
-displayAllBasket();
+
+function addAndSendContactForm(){
+
+    const contact = document.getElementById("submit");
+    contact.addEventListener("click", function(e) {
+        
+        const eltContact = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+            
+        }
+        const contact = JSON.parse(localStorage.getItem("Contact")) || [];
+        contact.push(eltContact); 
+        localStorage.setItem("Contact", JSON.stringify(contact));
+
+
+
+
+        
+        const products = localStorage.getItem("Basketid")
+
+        console.log(contact)
+        console.log(products)
+
+        fetch("http://localhost:3000/api/cameras/order", {
+
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            
+            body: JSON.stringify({contact, products})
+            })
+
+
+            .then(function(response){
+                return response.json();
+            })
+
+
+            .then(function(value){
+                let order = JSON.stringify(value);
+                localStorage.setItem("order", order);
+            })
+
+            .catch(function(error){
+                console.log(error)
+            })
+            
+    })
+    
+}
+
+
+
+
+
+
+
+total()
+getLocalStorage()
+clearBasket()
+addAndSendContactForm()
+
 
 
