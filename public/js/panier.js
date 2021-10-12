@@ -8,16 +8,11 @@
 const basket = JSON.parse(localStorage.getItem("Basket"));
 console.log(basket)
 
-
-
-
-
-
-
+let productsId = []
 
 function getLocalStorage() {
     
-    let productId = []
+    
 
     for (let i in basket) {
         
@@ -28,15 +23,13 @@ function getLocalStorage() {
 
         document.getElementById("display").appendChild(article);
 
-        productId.push(basket[i].Id)
-        localStorage.setItem("Basketid", JSON.stringify(productId))
+        productsId.push(basket[i].Id)
+        localStorage.setItem("Basketid", JSON.stringify(productsId))
 
         
     };
-    console.log(productId)
+    console.log(productsId)
 }
-
-
 
 
 function total(){
@@ -50,7 +43,6 @@ function total(){
     console.log("totalBasket: " + totalBasket);
     document.getElementById("total").innerHTML = totalBasket + ' €'
 }
-
 
 
 function clearBasket(){
@@ -72,14 +64,13 @@ function clearBasket(){
 }
 
 
+function addandsendContactForm(){
 
+    const eventContact = document.getElementById("submit");
+    eventContact.addEventListener("click", function(e) {
+        e.preventDefault();
 
-function addAndSendContactForm(){
-
-    const contact = document.getElementById("submit");
-    contact.addEventListener("click", function(e) {
-        
-        const eltContact = {
+        let contact = { //permet de créer un objet avec les éléments ci-dessous
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
             address: document.getElementById("address").value,
@@ -87,18 +78,12 @@ function addAndSendContactForm(){
             email: document.getElementById("email").value,
             
         }
-        const contact = JSON.parse(localStorage.getItem("Contact")) || [];
-        contact.push(eltContact); 
-        localStorage.setItem("Contact", JSON.stringify(contact));
-
-
-
-
         
-        const products = localStorage.getItem("Basketid")
+        let products = productsId
 
-        console.log(contact)
-        console.log(products)
+        console.log(contact) //permet de vérifier l'objet contact avant l'envoi
+        console.log(productsId) //permet de vérifier le tableau d'ID avant l'envoi
+
 
         fetch("http://localhost:3000/api/cameras/order", {
 
@@ -111,35 +96,28 @@ function addAndSendContactForm(){
             body: JSON.stringify({contact, products})
             })
 
-
-            .then(function(response){
-                return response.json();
-            })
-
-
-            .then(function(value){
-                let order = JSON.stringify(value);
-                localStorage.setItem("order", order);
-            })
-
-            .catch(function(error){
-                console.log(error)
-            })
+        .then(function(response){
+            console.log(response)
+            return response.json();
             
+        })
+
+        .then(function(value){
+            let order = JSON.stringify(value);
+            localStorage.setItem("order", order);
+            document.location.href = 'confirmation.html'
+        })
     })
-    
-}
+} 
 
 
 
 
-
-
-
-total()
 getLocalStorage()
+total()
+
 clearBasket()
-addAndSendContactForm()
+addandsendContactForm()
 
 
 
