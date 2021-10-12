@@ -8,32 +8,28 @@
 const basket = JSON.parse(localStorage.getItem("Basket"));
 console.log(basket)
 
-
-
-
-function displayAllBasket(){
-    
-    total()
-    getLocalStorage()
-    clearBasket()
-}
-
-
-
+let productsId = []
 
 function getLocalStorage() {
-    for (let i in basket) {
-         const article = document.createElement("tr");
-         article.classList.add("my-5");
-         article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
-
-
-         document.getElementById("display").appendChild(article);
-    };
     
+    
+
+    for (let i in basket) {
+        
+        const article = document.createElement("tr");
+        article.classList.add("my-5");
+        article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
+
+
+        document.getElementById("display").appendChild(article);
+
+        productsId.push(basket[i].Id)
+        localStorage.setItem("Basketid", JSON.stringify(productsId))
+
+        
+    };
+    console.log(productsId)
 }
-
-
 
 
 function total(){
@@ -49,7 +45,6 @@ function total(){
 }
 
 
-
 function clearBasket(){
     
     if(localStorage !=0){
@@ -63,14 +58,66 @@ function clearBasket(){
             localStorage.clear();
             location.reload();
         })
-        
+
         document.getElementById("clear").appendChild(button);
     }
-        
 }
 
 
+function addandsendContactForm(){
 
-displayAllBasket();
+    const eventContact = document.getElementById("submit");
+    eventContact.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        let contact = { //permet de créer un objet avec les éléments ci-dessous
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+            
+        }
+        
+        let products = productsId
+
+        console.log(contact) //permet de vérifier l'objet contact avant l'envoi
+        console.log(productsId) //permet de vérifier le tableau d'ID avant l'envoi
+
+
+        fetch("http://localhost:3000/api/cameras/order", {
+
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            
+            body: JSON.stringify({contact, products})
+            })
+
+        .then(function(response){
+            console.log(response)
+            return response.json();
+            
+        })
+
+        .then(function(value){
+            let order = JSON.stringify(value);
+            localStorage.setItem("order", order);
+            document.location.href = 'confirmation.html'
+        })
+    })
+} 
+
+
+
+
+getLocalStorage()
+total()
+
+clearBasket()
+addandsendContactForm()
+
 
 
