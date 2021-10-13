@@ -4,14 +4,14 @@
 
 
 
-
 const basket = JSON.parse(localStorage.getItem("Basket"));
 console.log(basket)
 
 let productsId = []
 
+
+
 function getLocalStorage() {
-    
     
 
     for (let i in basket) {
@@ -41,6 +41,7 @@ function total(){
     }
 
     console.log("totalBasket: " + totalBasket);
+    localStorage.setItem("Prixtotal", totalBasket)
     document.getElementById("total").innerHTML = totalBasket + ' €'
 }
 
@@ -106,16 +107,14 @@ function addandsendContactForm(){
             let order = JSON.stringify(value);
             localStorage.setItem("order", order);
             document.location.href = 'confirmation.html'
+            localStorage.removeItem('Basket')
         })
     })
 } 
 
 
-
-
 getLocalStorage()
 total()
-
 clearBasket()
 addandsendContactForm()
 

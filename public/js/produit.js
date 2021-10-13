@@ -46,7 +46,7 @@ function displayOneProduct(article){
 
     product.innerHTML = 
         (
-            '<figure><img class="picture rounded-3 w-100" src="'
+            '<figure id="addProduct"><img class="picture rounded-3 w-100" src="'
             + article.imageUrl 
             + '" alt="'
             + article.name 
@@ -103,7 +103,15 @@ function addBasket(article){
         }
         const basket = JSON.parse(localStorage.getItem("Basket")) || []; //renvoie le JSON si vrai sinon renvoie le tableau si pas de JSON (ou logique)
         basket.push(eltBasket); 
-        localStorage.setItem("Basket", JSON.stringify(basket)); 
+        localStorage.setItem("Basket", JSON.stringify(basket));
+
+        let addProduct = document.createElement("div");
+        addProduct.innerHTML =
+            (
+                '<p class ="text-white">Produit(s) ajouté(s) au panier</p>'
+            )
+
+        document.getElementById("addProduct").appendChild(addProduct);
     });
 }
 
