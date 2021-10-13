@@ -41,6 +41,7 @@ function total(){
     }
 
     console.log("totalBasket: " + totalBasket);
+    localStorage.setItem("Prixtotal", totalBasket)
     document.getElementById("total").innerHTML = totalBasket + ' €'
 }
 
