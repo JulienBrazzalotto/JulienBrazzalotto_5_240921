@@ -58,7 +58,7 @@ function clearBasket(){
     if(localStorage !=0){ //si le localstorage est rempli 
         let button = document.createElement("p"); //Je crée un paragraphe
         button.classList.add("mb-5"); //Avec cette classe
-        button.innerHTML = ('<a class="bg-dark text-white rounded-pill p-2">vider le panier</a>'); //et ce bouton
+        button.innerHTML = ('<button class="bg-dark text-white rounded-pill p-2">vider le panier</button>'); //et ce bouton
 
         
         button.addEventListener('click', function(e){ //Lorsque j'y clique dessus 
