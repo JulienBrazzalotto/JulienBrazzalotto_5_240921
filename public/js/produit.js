@@ -32,7 +32,7 @@ function getOneArticle(){
 
             return response.json(); //transforme la réponse en json pour etre lu par le javascript
         })
-        .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promise précédente
+        .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promesse précédente
             document.getElementById('display').innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit..."
         })
 }
@@ -40,8 +40,8 @@ function getOneArticle(){
 
 //Fonction permettant d'afficher l'article récupéré
 function displayOneProduct(article){
-    const product = document.createElement("div");
-    product.classList.add("box", "mx-3", "my-3", "rounded-3", "bg-dark", "w-100", "h-100");
+    const product = document.createElement("div"); //Crée une div
+    product.classList.add("box", "mx-3", "my-3", "rounded-3", "bg-dark", "w-100", "h-100"); //ajoute des class
     
 
     product.innerHTML = 
@@ -79,12 +79,12 @@ function convertPrice(article){
 
 //Fonction permettant d'afficher les lentilles
 function displayLenses(article){
-    for(const i in article.lenses){
-        const lenseOption = document.createElement("option");
-        lenseOption.setAttribute("value", article.lenses[i]);
+    for(const i in article.lenses){ //Pour chaque lentille présente dans le Json
+        const lenseOption = document.createElement("option"); //Je crée une balise option
+        lenseOption.setAttribute("value", article.lenses[i]); //Donne sa valeur
         lenseOption.innerHTML = article.lenses[i];
 
-        document.getElementById("select").appendChild(lenseOption);
+        document.getElementById("select").appendChild(lenseOption); //Je l'intègre donc comme enfant de la balise select
     }    
 }
 
@@ -92,26 +92,26 @@ function displayLenses(article){
 
 //Fonction permettant d'ajouter un article au localstorage a chaque clic sur le bouton
 function addBasket(article){
-    const add = document.getElementById("add");
-    add.addEventListener("click", function(e) {
-        const eltBasket = {
+    const add = document.getElementById("add"); //Pointe sur id "add"
+    add.addEventListener("click", function(e) { //Sur le clic du bouton
+        const eltBasket = { //création d'un objet
             Id: idProduct,
             Nom: article.name,
             Lense: select.value,
             Quantity: qty.value,
             Prix: convertPrice(article),
         }
-        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //renvoie le JSON si vrai sinon renvoie le tableau si pas de JSON (ou logique)
-        basket.push(eltBasket); 
-        localStorage.setItem("Basket", JSON.stringify(basket));
+        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //recupère le localstorage si vrai sinon crée le tableau si pas de JSON (ou logique)
+        basket.push(eltBasket); //pousse un nouveau objet a chaque click
+        localStorage.setItem("Basket", JSON.stringify(basket)); //Ecrit dans le local storage
 
-        let addProduct = document.createElement("div");
+        let addProduct = document.createElement("div"); //Crée une div
         addProduct.innerHTML =
             (
                 '<p class ="text-white">Produit(s) ajouté(s) au panier</p>'
             )
 
-        document.getElementById("addProduct").appendChild(addProduct);
+        document.getElementById("addProduct").appendChild(addProduct);//Je l'intègre
     });
 }
 

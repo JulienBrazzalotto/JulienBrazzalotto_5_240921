@@ -6,18 +6,18 @@
 
 
 
+//fonction permettant d'afficher le numéro de facture
+function displayOrderNumber(){
 
-function ordernumber(){
-
-    const returnBackEnd = JSON.parse(localStorage.getItem("order"));
+    const returnBackEnd = JSON.parse(localStorage.getItem("order")); //Je crée une variable contenant le localstorage de la clé "order" sous forme d'objet
     console.log(returnBackEnd)
-    const prixTotal = localStorage.getItem("Prixtotal");
+    const prixTotal = localStorage.getItem("Prixtotal"); //Je crée une variable contenant le prixtotal stocké dans la page panier
 
-    const confirmation = document.createElement("p");
-    confirmation.classList.add("p-5","fs-5");
+    const confirmation = document.createElement("p"); //Je crée un paragraphe
+    confirmation.classList.add("p-5","fs-5"); // Contenant ces class
     confirmation.textContent = "Nous validons M. ou Mme " + returnBackEnd.contact.lastName + " votre commande de " + prixTotal + "€. Votre numéro de facture est le " + returnBackEnd.orderId + ". Nous vous remercions de votre achat.";
 
-    document.getElementById("order").appendChild(confirmation);
+    document.getElementById("order").appendChild(confirmation); //Je l'intègre
 }
 
-ordernumber();
+displayOrderNumber();
