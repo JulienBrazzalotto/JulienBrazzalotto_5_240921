@@ -45,7 +45,7 @@ function displayArticle(article) {
             + article.description 
             + '</p><p class="my-5 text-white">Prix: ' 
             + convertPrice(article) 
-            + '</p></figcaption><p>Decouvrez ce modèle</p></figure></a>'
+            + '</p></figcaption><p>Découvrez ce modèle</p></figure></a>'
         );
 
     document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM

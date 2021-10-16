@@ -96,6 +96,18 @@ function addAndSendContactForm(){
         console.log(products) //permet de vérifier le tableau d'ID avant l'envoi
 
 
+        if(contact.firstName == "") // Permet de voir si un champs est vide. Dans ce cas, cela arrete l'envoi du formulaire
+            alert('Veuillez remplir votre prénom');
+        if(contact.lastName == "")
+            alert('Veuillez remplir votre nom');
+        if(contact.address == "")
+            alert('Veuillez remplir votre adresse');
+        if(contact.city == "")
+            alert('Veuillez remplir votre ville');
+        if(contact.email == "")
+            alert('Veuillez remplir votre email');
+        
+        else
         fetch("http://localhost:3000/api/cameras/order", { //envoi a l'API via cette adresse
 
             method: "POST",

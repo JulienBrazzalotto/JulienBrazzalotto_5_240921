@@ -13,11 +13,11 @@ function displayOrderNumber(){
     console.log(returnBackEnd)
     const prixTotal = localStorage.getItem("Prixtotal"); //Je crée une variable contenant le prixtotal stocké dans la page panier
 
-    const confirmation = document.createElement("p"); //Je crée un paragraphe
+    const confirmation = document.getElementById("order").innerHTML = ('<p class="p-5 fs-5">Nous validons M. ou Mme <b>'+ returnBackEnd.contact.lastName +'</b> votre commande de <b>'+ prixTotal +'</b> €.<br> Votre numéro de facture est le <b>'+ returnBackEnd.orderId +'</b>.<br> Nous vous remercions de votre achat.</p>')
     confirmation.classList.add("p-5","fs-5"); // Contenant ces class
-    confirmation.textContent = "Nous validons M. ou Mme " + returnBackEnd.contact.lastName + " votre commande de " + prixTotal + "€. Votre numéro de facture est le " + returnBackEnd.orderId + ". Nous vous remercions de votre achat.";
+    
 
-    document.getElementById("order").appendChild(confirmation); //Je l'intègre
+    
 }
 
 displayOrderNumber();
