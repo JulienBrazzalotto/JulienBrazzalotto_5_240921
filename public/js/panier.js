@@ -7,7 +7,7 @@
 const basket = JSON.parse(localStorage.getItem("Basket")); //récupère le localstorage clé "Basket"
 console.log(basket)
 
-let productsId = [] //Je crée un tableau d'ID produit
+let productsId = [] //Je crée un tableau d'ID produits
 
 
 
