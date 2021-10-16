@@ -4,7 +4,7 @@
 
 
 
-const basket = JSON.parse(localStorage.getItem("Basket")); //récupère le localstorage clé "Basket"
+const basket = JSON.parse(localStorage.getItem("Basket")); //récupère le localStorage clé "Basket"
 console.log(basket)
 
 let productsId = [] //Je crée un tableau d'ID produits
@@ -22,10 +22,10 @@ function displayLocalStorage() {
         article.innerHTML = ('<td> '+ basket[i].Nom +' </td><td>'+ basket[i].Lense +'</td><td>'+ basket[i].Quantity +'</td><td>'+ basket[i].Prix +' €</td>');
 
 
-        document.getElementById("display").appendChild(article); //je l'intégre
+        document.getElementById("display").appendChild(article); //je l'intègre
 
         productsId.push(basket[i].Id) //Je met dans le tableau productId son id pour la suite
-        localStorage.setItem("Basketid", JSON.stringify(productsId)) //Je l'écris sur le localstorage avec la clé Basketid
+        localStorage.setItem("Basketid", JSON.stringify(productsId)) //Je l'écris sur le localStorage avec la clé Basketid
         
     };
     console.log(productsId)
@@ -45,17 +45,17 @@ function total(){
     }
 
     console.log("totalBasket: " + totalBasket);
-    localStorage.setItem("Prixtotal", totalBasket) //Je l'écris sur le localstorage avec la clé "Prixtotal"
+    localStorage.setItem("Prixtotal", totalBasket) //Je l'écris sur le localStorage avec la clé "Prixtotal"
     document.getElementById("total").innerHTML = totalBasket + ' €'; //je l'intègre
 }
 
 
 
 
-//Fontion permettant de vider le panier
+//Fonction permettant de vider le panier
 function clearBasket(){
     
-    if(localStorage !=0){ //si le localstorage est rempli 
+    if(localStorage !=0){ //si le localStorage est rempli 
         let button = document.createElement("p"); //Je crée un paragraphe
         button.classList.add("mb-5"); //Avec cette classe
         button.innerHTML = ('<button class="bg-dark text-white rounded-pill p-2">vider le panier</button>'); //et ce bouton
@@ -63,7 +63,7 @@ function clearBasket(){
         
         button.addEventListener('click', function(e){ //Lorsque j'y clique dessus 
             
-            localStorage.clear(); //J'efface le localstorage en entier
+            localStorage.clear(); //J'efface le localStorage en entier
             location.reload(); //et je remet le panier a jour en rechargeant ce dernier
         })
 
@@ -96,7 +96,7 @@ function addAndSendContactForm(){
         console.log(products) //permet de vérifier le tableau d'ID avant l'envoi
 
 
-        if(contact.firstName == "") // Permet de voir si un champs est vide. Dans ce cas, cela arrete l'envoi du formulaire
+        if(contact.firstName == "") // Permet de voir si un champs est vide. Dans ce cas, cela arrête l'envoi du formulaire
             alert('Veuillez remplir votre prénom');
         if(contact.lastName == "")
             alert('Veuillez remplir votre nom');
@@ -121,15 +121,15 @@ function addAndSendContactForm(){
 
         .then(function(response){
             console.log(response)
-            return response.json(); //transforme la réponse en json pour etre lu par le javascript
+            return response.json(); //transforme la réponse en json pour être lu par le javascript
             
         })
 
         .then(function(value){
-            const order = JSON.stringify(value); //Je crée une variable en le transformant en une chaine json
-            localStorage.setItem("order", order); //Je la mets dans le localstorage avec la clé "order"
+            const order = JSON.stringify(value); //Je crée une variable en le transformant en une chaîne json
+            localStorage.setItem("order", order); //Je la mets dans le localStorage avec la clé "order"
             document.location.href = 'confirmation.html' //Je me redirige vers la page confirmation.html
-            localStorage.removeItem("Basket") // J'efface sur le localstorage la clé "Basket"
+            localStorage.removeItem("Basket") // J'efface sur le localStorage la clé "Basket"
         })
     })
 } 

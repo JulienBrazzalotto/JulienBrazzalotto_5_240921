@@ -2,7 +2,7 @@
 "use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
 
 
-//Récuperer les articles avec une fonction
+//Récupérer les articles avec une fonction
 async function displayAllArticles() {
     const articles = await getAllArticles() //articles est le json récupéré sur l'API
 
@@ -18,7 +18,7 @@ function getAllArticles() {
         .then(function(response) {
             console.log(response) //Permet de voir si on récupère bien le json
 
-            return response.json(); //transforme la réponse en json pour etre lu par le javascript
+            return response.json(); //transforme la réponse en json pour être lu par le javascript
         })
         .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promise précédente
             document.getElementById('display').innerHTML = "Erreur !!! Nous ne pouvons pas récupérer vos produits..."

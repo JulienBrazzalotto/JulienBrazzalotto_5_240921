@@ -1,4 +1,4 @@
-//Afficher le produit sélectionner dans la page index.html, choisir son option, et mettre dans le localstorage
+//Afficher le produit sélectionner dans la page index.html, choisir son option, et mettre dans le localStorage
 "use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
 
 
@@ -12,7 +12,7 @@ console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
 
 
 
-//Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localstorage des articles
+//Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
     displayOneProduct(article);
@@ -30,7 +30,7 @@ function getOneArticle(){
         .then(function(response) {
             console.log(response) //Permet de voir si on récupère bien le json
 
-            return response.json(); //transforme la réponse en json pour etre lu par le javascript
+            return response.json(); //transforme la réponse en json pour être lu par le javascript
         })
         .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promesse précédente
             document.getElementById('display').innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit..."
@@ -90,7 +90,7 @@ function displayLenses(article){
 
 
 
-//Fonction permettant d'ajouter un article au localstorage a chaque clic sur le bouton
+//Fonction permettant d'ajouter un article au localStorage a chaque clic sur le bouton
 function addBasket(article){
     const add = document.getElementById("add"); //Pointe sur id "add"
     add.addEventListener("click", function(e) { //Sur le clic du bouton
@@ -101,9 +101,9 @@ function addBasket(article){
             Quantity: qty.value,
             Prix: convertPrice(article),
         }
-        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //recupère le localstorage si vrai sinon crée le tableau si pas de JSON (ou logique)
+        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //Récupère le localStorage si vrai sinon crée le tableau si pas de JSON (ou logique)
         basket.push(eltBasket); //pousse un nouveau objet a chaque click
-        localStorage.setItem("Basket", JSON.stringify(basket)); //Ecrit dans le local storage
+        localStorage.setItem("Basket", JSON.stringify(basket)); //Écrit dans le local storage
 
         let addProduct = document.createElement("div"); //Crée une div
         addProduct.innerHTML =
