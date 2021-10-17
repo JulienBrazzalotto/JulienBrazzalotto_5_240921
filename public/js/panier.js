@@ -44,7 +44,6 @@ function total(){
         console.log("totalBasket #" + i + ": " + totalBasket);        
     }
 
-    console.log("totalBasket: " + totalBasket);
     localStorage.setItem("Prixtotal", totalBasket) //Je l'écris sur le localStorage avec la clé "Prixtotal"
     document.getElementById("total").innerHTML = totalBasket + ' €'; //je l'intègre
 }
@@ -108,29 +107,29 @@ function addAndSendContactForm(){
             alert('Veuillez remplir votre email');
         
         else
-        fetch("http://localhost:3000/api/cameras/order", { //envoi a l'API via cette adresse
+            fetch("http://localhost:3000/api/cameras/order", { //envoi a l'API via cette adresse
 
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            
-            body: JSON.stringify({contact, products}) //de ce contenu (un objet contenant un objet contact et un tableau d'id)
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                
+                body: JSON.stringify({contact, products}) //de ce contenu (un objet contenant un objet contact et un tableau d'id)
+                })
+
+            .then(function(response){
+                console.log(response)
+                return response.json(); //transforme la réponse en json pour être lu par le javascript
+                
             })
 
-        .then(function(response){
-            console.log(response)
-            return response.json(); //transforme la réponse en json pour être lu par le javascript
-            
-        })
-
-        .then(function(value){
-            const order = JSON.stringify(value); //Je crée une variable en le transformant en une chaîne json
-            localStorage.setItem("order", order); //Je la mets dans le localStorage avec la clé "order"
-            document.location.href = 'confirmation.html' //Je me redirige vers la page confirmation.html
-            
-        })
+            .then(function(value){
+                const order = JSON.stringify(value); //Je crée une variable en le transformant en une chaîne json
+                localStorage.setItem("order", order); //Je la mets dans le localStorage avec la clé "order"
+                document.location.href = 'confirmation.html' //Je me redirige vers la page confirmation.html
+                
+            })
     })
 } 
 

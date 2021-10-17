@@ -5,7 +5,8 @@
 //Récupérer les articles avec une fonction
 async function displayAllArticles() {
     const articles = await getAllArticles() //articles est le json récupéré sur l'API
-
+    console.log(articles)
+    
     for (let article of articles) //Afficher avec la boucle for...of tous les articles (un par un)
         displayArticle(article) //Fonction afficher un article
 }
@@ -54,6 +55,7 @@ function displayArticle(article) {
 //Convertir le prix en euros en renvoyant un format en fonction de la locale
 function convertPrice(article){
     const newPrice = article.price / 100
+    console.log(newPrice)
 
     return Intl.NumberFormat('fr-FR', {style: 'currency', currency: 'EUR'}).format(newPrice);
 }

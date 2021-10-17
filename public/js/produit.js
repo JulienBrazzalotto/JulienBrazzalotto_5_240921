@@ -14,6 +14,8 @@ console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
 //Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
+    console.log(article)
+
     displayOneProduct(article);
     displayLenses(article);
     addBasket(article);
@@ -23,6 +25,7 @@ async function displayFullArticle(){
 
 //Créer la fonction getArticle qui récupère l'article avec l'ID récupéré dans l'URL
 function getOneArticle(){
+
     return fetch("http://localhost:3000/api/cameras/" + idProduct)
         .then(function(response) {
             console.log(response) //Permet de voir si on récupère bien le json
@@ -65,6 +68,7 @@ function displayOneProduct(article){
 //Convertir le prix en euros en renvoyant un format en fonction de la locale comme sur la page index.html
 function convertPrice(article){
     const newPrice = article.price / 100;
+    console.log(newPrice)
 
     return newPrice;
 }
@@ -96,7 +100,7 @@ function addBasket(article){
             Quantity: qty.value,
             Prix: convertPrice(article),
         }
-        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //Récupère le localStorage si vrai sinon crée le tableau si pas de JSON (ou logique)
+        const basket = JSON.parse(localStorage.getItem("Basket")) || []; //Récupère le localStorage si vrai sinon crée le tableau si vide (ou logique)
         basket.push(eltBasket); //pousse un nouveau objet a chaque click
         localStorage.setItem("Basket", JSON.stringify(basket)); //Écrit dans le local storage
 
