@@ -11,7 +11,6 @@ console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
 
 
 
-
 //Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
@@ -19,8 +18,6 @@ async function displayFullArticle(){
     displayLenses(article);
     addBasket(article);
 }
-
-
 
 
 
@@ -65,14 +62,12 @@ function displayOneProduct(article){
 
 
 
-
 //Convertir le prix en euros en renvoyant un format en fonction de la locale comme sur la page index.html
 function convertPrice(article){
     const newPrice = article.price / 100;
 
     return newPrice;
 }
-
 
 
 

@@ -13,7 +13,7 @@ let productsId = [] //Je crée un tableau d'ID produits
 
 
 
-// Fonction permettant d'afficher le tableau 
+// Fonction permettant d'afficher le panier
 function displayLocalStorage() {
     
     for (let i in basket) { //Pour chaque élément présent dans le localStorage de la clé "basket"
@@ -129,7 +129,7 @@ function addAndSendContactForm(){
             const order = JSON.stringify(value); //Je crée une variable en le transformant en une chaîne json
             localStorage.setItem("order", order); //Je la mets dans le localStorage avec la clé "order"
             document.location.href = 'confirmation.html' //Je me redirige vers la page confirmation.html
-            localStorage.removeItem("Basket") // J'efface sur le localStorage la clé "Basket"
+            
         })
     })
 } 
