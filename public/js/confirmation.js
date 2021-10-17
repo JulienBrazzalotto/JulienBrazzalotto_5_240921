@@ -9,7 +9,16 @@ function displayOrderNumber(){
     console.log(returnBackEnd)
     const prixTotal = localStorage.getItem("Prixtotal"); //Je crée une variable contenant le prixtotal stocké dans la page panier
 
-    const confirmation = document.getElementById("order").innerHTML = ('<p class="p-5 fs-5">Nous validons M. ou Mme <b>'+ returnBackEnd.contact.lastName +'</b> votre commande de <b>'+ prixTotal +' €</b>.<br> Votre numéro de facture est le <b>'+ returnBackEnd.orderId +'</b>.<br> Nous vous remercions de votre achat.</p>')
+    const confirmation = document.getElementById("order").innerHTML =
+        (
+            '<p class="p-5 fs-5">Nous validons M. ou Mme <b>'
+            + returnBackEnd.contact.lastName 
+            +'</b> votre commande de <b>'
+            + prixTotal
+            +' €</b>.<br> Votre numéro de facture est le <b>'
+            + returnBackEnd.orderId
+            +'</b>.<br> Nous vous remercions de votre achat.</p>')
+    
     localStorage.clear()
 }
 
