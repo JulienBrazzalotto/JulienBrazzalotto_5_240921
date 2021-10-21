@@ -11,16 +11,15 @@ function displayOrderNumber(){
 
     const confirmation = document.getElementById("order").innerHTML =
         (
-            '<p class="p-5 fs-5">"Nous validons M. ou Mme "<b>'
+            '<p class="p-5 fs-5">Nous validons M. ou Mme <b>'
             + returnBackEnd.contact.lastName 
-            +'</b>" votre commande de "<b>'
+            +'</b> votre commande de <b>'
             + prixTotal
-            +' €</b>.<br>" Votre numéro de facture est le "<b>'
+            +' €</b>.<br>Votre numéro de facture est le <b>'
             + returnBackEnd.orderId
-            +'</b>.<br>" Nous vous remercions de votre achat."</p>');
+            +'</b>.<br>Nous vous remercions de votre achat.</p>');
     
     localStorage.clear();
 }
 
 displayOrderNumber();
-
