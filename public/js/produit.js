@@ -7,15 +7,11 @@
 //Permet de récupérer l"ID du produit fourni sur la page index.html
 const params = new URL(document.location).searchParams; //Permet de récupérer l"URL de la page actuelle
 const idProduct = params.get("id"); //permet de récupérer l"ID dans l"URL
-console.log(idProduct); // Permet de voir si on récupère bien l"ID du produit
-
 
 
 //Fonction permettant d"afficher l"article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
-    console.log(article);
-
     displayOneProduct(article);
     displayLenses(article);
     addBasket(article);
@@ -28,8 +24,6 @@ function getOneArticle(){
 
     return fetch("http://localhost:3000/api/cameras/" + idProduct)
         .then(function(response) {
-            console.log(response); //Permet de voir si on récupère bien le json
-
             return response.json(); //transforme la réponse en json pour être lu par le javascript
         })
         .catch(function(error) { //Envoie un message d"erreur s"il ne peut pas le récupérer dans la promesse précédente
@@ -68,7 +62,6 @@ function displayOneProduct(article){
 //Convertir le prix en euros en renvoyant un format en fonction de la locale comme sur la page index.html
 function convertPrice(article){
     const newPrice = article.price / 100;
-    console.log(newPrice);
 
     return newPrice;
 }

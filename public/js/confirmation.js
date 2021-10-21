@@ -6,7 +6,6 @@
 function displayOrderNumber(){
 
     const returnBackEnd = JSON.parse(localStorage.getItem("order")); //Je crée une variable contenant le localStorage de la clé "order" sous forme d"objet
-    console.log(returnBackEnd);
     const prixTotal = localStorage.getItem("Prixtotal"); //Je crée une variable contenant le prixtotal stocké dans la page panier
 
     const confirmation = document.getElementById("order").innerHTML =

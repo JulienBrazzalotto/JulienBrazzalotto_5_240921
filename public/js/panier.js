@@ -5,7 +5,6 @@
 
 
 const basket = JSON.parse(localStorage.getItem("Basket")); //récupère le localStorage clé "Basket"
-console.log(basket);
 
 let productsId = []; //Je crée un tableau d"ID produits
 
@@ -28,7 +27,6 @@ function displayLocalStorage() {
         localStorage.setItem("Basketid", JSON.stringify(productsId)); //Je l"écris sur le localStorage avec la clé Basketid
         
     }
-    console.log(productsId);
 }
 
 
@@ -41,7 +39,6 @@ function total(){
 
     for (let i = 0; i < basket.length; i++){ //Pour chaque élément présent dans le localStorage de la clé "basket"
         totalBasket += basket[i].Prix * basket[i].Quantity; //J"incrément avec la somme du prix multiplié avec la quantité
-        console.log("totalBasket #" + i + ": " + totalBasket);        
     }
 
     localStorage.setItem("Prixtotal", totalBasket); //Je l"écris sur le localStorage avec la clé "Prixtotal"
@@ -91,9 +88,6 @@ function addAndSendContactForm(){
         
         let products = productsId; //Je crée une variable contenant le tableau
 
-        console.log(contact); //permet de vérifier l"objet contact avant l"envoi
-        console.log(products); //permet de vérifier le tableau d"ID avant l"envoi
-
 
         if(contact.firstName === ""){ // Permet de voir si un champs est vide. Dans ce cas, cela arrête l"envoi du formulaire
             alert("Veuillez remplir votre prénom");}
@@ -119,7 +113,6 @@ function addAndSendContactForm(){
                 })
 
             .then(function(response){
-                console.log(response);
                 return response.json(); //transforme la réponse en json pour être lu par le javascript
                 
             })
