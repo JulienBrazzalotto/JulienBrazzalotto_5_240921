@@ -10,56 +10,59 @@ a {
 
 a:hover,
 a:focus {
-    color: #e58300;
+  color: #e58300;
 }
 
 h1,
 h3 {
-    font-size: 3rem;
-    color: #e58300;
+  font-size: 3rem;
+  color: #e58300;
 }
 
 h2 {
-    font-size: 2rem;
-    color: white;
+  font-size: 2rem;
+  color: white;
 }
 
 .line {
-    height: 3px;
-    background-color: #e58300;
+  height: 3px;
+  background-color: #e58300;
 }
 
 .active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .picture {
-    height: 200px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hover:hover,
 .hover:focus {
-    transform: scale(1.05);
-    transition: 500ms;
+  transform: scale(1.05);
+  transition: 500ms;
 }
 
 @media (max-width: 700px) {
-    table thead {
-    display: none;
-    }
-    table tr{
-    display: block;
-    margin-bottom: 40px;
-    }
-    table td {
-    display: block;
-    }
-    table td:before {
-    float: left;
-    font-weight: bold;
-    }
+  table thead {
+  display: none;
+  }
+
+  table tr {
+  display: block;
+  margin-bottom: 40px;
+  }
+
+  table td {
+  display: block;
+  }
+  
+  table td:before {
+  float: left;
+  font-weight: bold;
+  }
 }
 
