@@ -60,7 +60,7 @@ h2 {
     display: block;
   }
 
-  table td:before {
+  table td::before {
     float: left;
     font-weight: bold;
   }
