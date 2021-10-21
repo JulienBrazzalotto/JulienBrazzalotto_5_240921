@@ -1,71 +1,67 @@
-body{
-    background-color: #f3e9f1;
+body {
+  background-color: #f3e9f1;
 }
 
-ul{
-    list-style: none;
+a {
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
-a{
-    color: black;
-    font-size: 1.5rem;
-    text-decoration: none;
+a:hover,
+a:focus {
+  color: #e58300;
 }
 
-a:hover{
-    color: #e58300;
+h1,
+h3 {
+  font-size: 3rem;
+  color: #e58300;
 }
 
-h1{
-    font-size: 3rem;
-    color: #e58300;
+h2 {
+  font-size: 2rem;
+  color: white;
 }
 
-h2{
-    font-size: 2rem;
-    color: white;
+.line {
+  height: 3px;
+  background-color: #e58300;
 }
 
-h3{
-    font-size: 3rem;
-    color: #e58300;
+.active {
+  text-decoration: underline;
 }
 
-.line{
-    height: 3px;
-    background-color: #e58300;
+.picture {
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
 }
 
-.active{
-    text-decoration: underline;
+.hover:hover,
+.hover:focus {
+  transform: scale(1.05);
+  transition: 500ms;
 }
 
-.picture{
-    height: 200px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
-
-.hover:hover{
-    transform: scale(1.05);
-    transition: 500ms;
-}
-
-@media (max-width: 700px){
-    table thead {
+@media (max-width: 700px) {
+  table thead {
     display: none;
-    }
-    table tr{
+  }
+
+  table tr {
     display: block;
     margin-bottom: 40px;
-    }
-    table td {
+  }
+
+  table td {
     display: block;
-    }
-    table td:before {
+  }
+
+  table td::before {
     float: left;
     font-weight: bold;
-    }
-    }
-
+  }
+}
