@@ -130,7 +130,7 @@ function addAndSendContactForm(){
                 document.location.href = "confirmation.html"; //Je me redirige vers la page confirmation.html
                 
             });
-    }})
+    }});
 } 
 
 
