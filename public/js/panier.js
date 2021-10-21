@@ -96,15 +96,15 @@ function addAndSendContactForm(){
 
 
         if(contact.firstName === ""){ // Permet de voir si un champs est vide. Dans ce cas, cela arrête l"envoi du formulaire
-            alert("Veuillez remplir votre prénom")};
+            alert("Veuillez remplir votre prénom");}
         if(contact.lastName === ""){
-            alert("Veuillez remplir votre nom")};
+            alert("Veuillez remplir votre nom");}
         if(contact.address === ""){
-            alert("Veuillez remplir votre adresse")};
+            alert("Veuillez remplir votre adresse");}
         if(contact.city === ""){
-            alert("Veuillez remplir votre ville")};
+            alert("Veuillez remplir votre ville");}
         if(contact.email === ""){
-            alert("Veuillez remplir votre email")}
+            alert("Veuillez remplir votre email");}
         
         else{
             fetch("http://localhost:3000/api/cameras/order", { //envoi a l"API via cette adresse
@@ -129,7 +129,7 @@ function addAndSendContactForm(){
                 localStorage.setItem("order", order); //Je la mets dans le localStorage avec la clé "order"
                 document.location.href = "confirmation.html"; //Je me redirige vers la page confirmation.html
                 
-            })
+            });
     }})
 } 
 
