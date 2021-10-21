@@ -28,13 +28,13 @@ function getOneArticle(){
 
     return fetch("http://localhost:3000/api/cameras/" + idProduct)
         .then(function(response) {
-            console.log(response) //Permet de voir si on récupère bien le json
+            console.log(response); //Permet de voir si on récupère bien le json
 
             return response.json(); //transforme la réponse en json pour être lu par le javascript
         })
         .catch(function(error) { //Envoie un message d"erreur s"il ne peut pas le récupérer dans la promesse précédente
-            document.getElementById("display").innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit..."
-        })
+            document.getElementById("display").innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit...";
+        });
 }
 
 
@@ -59,7 +59,7 @@ function displayOneProduct(article){
             + ' €</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>')
 
 
-    document.getElementById("display").appendChild(product) //Intégration du HTML dans le DOM
+    document.getElementById("display").appendChild(product); //Intégration du HTML dans le DOM
 }
 
 
@@ -68,7 +68,7 @@ function displayOneProduct(article){
 //Convertir le prix en euros en renvoyant un format en fonction de la locale comme sur la page index.html
 function convertPrice(article){
     const newPrice = article.price / 100;
-    console.log(newPrice)
+    console.log(newPrice);
 
     return newPrice;
 }
@@ -99,7 +99,7 @@ function addBasket(article){
             Lense: select.value,
             Quantity: qty.value,
             Prix: convertPrice(article),
-        }
+        };
         const basket = JSON.parse(localStorage.getItem("Basket")) || []; //Récupère le localStorage si vrai sinon crée le tableau si vide (ou logique)
         basket.push(eltBasket); //pousse un nouveau objet a chaque click
         localStorage.setItem("Basket", JSON.stringify(basket)); //Écrit dans le local storage
