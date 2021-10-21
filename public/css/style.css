@@ -1,12 +1,12 @@
 body {
-    background-color: #f3e9f1;
-}   
+  background-color: #f3e9f1;
+}
 
 a {
-    color: black;
-    font-size: 1.5rem;
-    text-decoration: none;
-}   
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
 
 a:hover,
 a:focus {
