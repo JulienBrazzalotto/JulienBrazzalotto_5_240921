@@ -7,14 +7,14 @@
 //Permet de récupérer l"ID du produit fourni sur la page index.html
 const params = new URL(document.location).searchParams; //Permet de récupérer l"URL de la page actuelle
 const idProduct = params.get("id"); //permet de récupérer l"ID dans l"URL
-console.log(idProduct) // Permet de voir si on récupère bien l"ID du produit
+console.log(idProduct); // Permet de voir si on récupère bien l"ID du produit
 
 
 
 //Fonction permettant d"afficher l"article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
-    console.log(article)
+    console.log(article);
 
     displayOneProduct(article);
     displayLenses(article);
@@ -56,7 +56,7 @@ function displayOneProduct(article){
             + article.description 
             + '</p><p class="my-5 text-white">Prix: ' 
             + convertPrice(article) 
-            + ' €</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>')
+            + ' €</p><label class="text-white" for="lense-select">Choisir une lentille: </label><select class="text-dark" name="lenses" id="select"></select><p><label class="text-white m-3" for="quantity">Quantité: </label><input id="qty" type="number" name="itemQuantity" min="1" max="50" value="1"></p></figcaption><button id="add" class="bg-white text-dark border border-2 border-dark rounded-pill mb-1 p-2">Ajouter au panier</button></figure>');
 
 
     document.getElementById("display").appendChild(product); //Intégration du HTML dans le DOM
@@ -108,7 +108,7 @@ function addBasket(article){
         addProduct.innerHTML =
             (
                 '<p class ="text-white">Produit(s) ajouté(s) au panier</p>'
-            )
+            );
 
         document.getElementById("addProduct").appendChild(addProduct);//Je l"intègre
     });

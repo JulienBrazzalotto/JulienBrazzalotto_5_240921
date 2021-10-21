@@ -7,8 +7,9 @@ async function displayAllArticles() {
     const articles = await getAllArticles(); //articles est le json récupéré sur l"API
     console.log(articles);
     
-    for (let article of articles) //Afficher avec la boucle for...of tous les articles (un par un)
+    for (let article of articles){ //Afficher avec la boucle for...of tous les articles (un par un)
         displayArticle(article); //Fonction afficher un article
+    }
 }
 
 
