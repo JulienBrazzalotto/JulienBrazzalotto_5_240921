@@ -1,17 +1,17 @@
 //Afficher le produit sélectionner dans la page index.html, choisir son option, et mettre dans le localStorage
-"use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l'avoir définie). Elle permet d'obtenir de meilleures performances et de faciliter le débogage.
+"use strict"; // Une variante plus restreinte de JavaScript (par exemple, on ne peut pas utiliser de variable avant de l"avoir définie). Elle permet d"obtenir de meilleures performances et de faciliter le débogage.
 
 
 
 
-//Permet de récupérer l'ID du produit fourni sur la page index.html
-const params = new URL(document.location).searchParams; //Permet de récupérer l'URL de la page actuelle
-const idProduct = params.get('id'); //permet de récupérer l'ID dans l'URL
-console.log(idProduct) // Permet de voir si on récupère bien l'ID du produit
+//Permet de récupérer l"ID du produit fourni sur la page index.html
+const params = new URL(document.location).searchParams; //Permet de récupérer l"URL de la page actuelle
+const idProduct = params.get("id"); //permet de récupérer l"ID dans l"URL
+console.log(idProduct) // Permet de voir si on récupère bien l"ID du produit
 
 
 
-//Fonction permettant d'afficher l'article avec les différentes options de lentilles et ajout dans le localStorage des articles
+//Fonction permettant d"afficher l"article avec les différentes options de lentilles et ajout dans le localStorage des articles
 async function displayFullArticle(){
     const article = await getOneArticle();
     console.log(article)
@@ -23,7 +23,7 @@ async function displayFullArticle(){
 
 
 
-//Créer la fonction getArticle qui récupère l'article avec l'ID récupéré dans l'URL
+//Créer la fonction getArticle qui récupère l"article avec l"ID récupéré dans l"URL
 function getOneArticle(){
 
     return fetch("http://localhost:3000/api/cameras/" + idProduct)
@@ -32,13 +32,13 @@ function getOneArticle(){
 
             return response.json(); //transforme la réponse en json pour être lu par le javascript
         })
-        .catch(function(error) { //Envoie un message d'erreur s'il ne peut pas le récupérer dans la promesse précédente
-            document.getElementById('display').innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit..."
+        .catch(function(error) { //Envoie un message d"erreur s"il ne peut pas le récupérer dans la promesse précédente
+            document.getElementById("display").innerHTML = "Erreur !!! Nous ne pouvons pas récupérer le produit..."
         })
 }
 
 
-//Fonction permettant d'afficher l'article récupéré
+//Fonction permettant d"afficher l"article récupéré
 function displayOneProduct(article){
     const product = document.createElement("div"); //Crée une div
     product.classList.add("box", "mx-3", "my-3", "rounded-3", "bg-dark", "w-100", "h-100"); //ajoute des class
@@ -76,24 +76,24 @@ function convertPrice(article){
 
 
 
-//Fonction permettant d'afficher les lentilles
+//Fonction permettant d"afficher les lentilles
 function displayLenses(article){
     for(const i in article.lenses){ //Pour chaque lentille présente dans le Json
         const lenseOption = document.createElement("option"); //Je crée une balise option
         lenseOption.setAttribute("value", article.lenses[i]); //Donne sa valeur
         lenseOption.innerHTML = article.lenses[i];
 
-        document.getElementById("select").appendChild(lenseOption); //Je l'intègre donc comme enfant de la balise select
+        document.getElementById("select").appendChild(lenseOption); //Je l"intègre donc comme enfant de la balise select
     }    
 }
 
 
 
-//Fonction permettant d'ajouter un article au localStorage a chaque clic sur le bouton
+//Fonction permettant d"ajouter un article au localStorage a chaque clic sur le bouton
 function addBasket(article){
     const add = document.getElementById("add"); //Pointe sur id "add"
     add.addEventListener("click", function(e) { //Sur le clic du bouton
-        const eltBasket = { //création d'un objet
+        const eltBasket = { //création d"un objet
             Id: idProduct,
             Nom: article.name,
             Lense: select.value,
@@ -110,7 +110,7 @@ function addBasket(article){
                 '<p class ="text-white">Produit(s) ajouté(s) au panier</p>'
             )
 
-        document.getElementById("addProduct").appendChild(addProduct);//Je l'intègre
+        document.getElementById("addProduct").appendChild(addProduct);//Je l"intègre
     });
 }
 
