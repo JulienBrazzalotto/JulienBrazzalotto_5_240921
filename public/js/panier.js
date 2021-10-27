@@ -112,7 +112,7 @@ function addAndSendContactForm(){
         const regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
         
         if (regexText.test(contact.firstName) === false || regexText.test(contact.lastName) === false || regexTextAndNum.test(contact.address) === true || regexText.test(contact.city) === false || regexEmail.test(contact.email) === false) {
-            alert("Veuillez vérifier les données de votre adresse de livraison");
+            alert("Veuillez vérifier l'écriture de votre adresse de livraison");
         }else{
 
     
