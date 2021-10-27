@@ -105,8 +105,17 @@ function addAndSendContactForm(){
             alert("Veuillez remplir votre ville");}
         if(contact.email === ""){
             alert("Veuillez remplir votre email");}
+
         
-        else{
+        const regexText = /^[a-zA-Z-\s]+$/;
+        const regexTextAndNum = /[§!@#$%^&*().?"{}|<>]/;
+        const regexEmail = /[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})/;
+        
+        if (regexText.test(contact.firstName) === false || regexText.test(contact.lastName) === false || regexTextAndNum.test(contact.address) === true || regexText.test(contact.city) === false || regexEmail.test(contact.email) === false) {
+            alert("Veuillez vérifier les données de votre adresse de livraison");
+        }else{
+
+    
             fetch("http://localhost:3000/api/cameras/order", { //envoi a l"API via cette adresse
 
                 method: "POST",
